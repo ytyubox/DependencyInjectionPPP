@@ -1,13 +1,13 @@
 import Foundation
 public class Program {
     private static func Main() throws {
-        EarlyBindingExample()
+        try EarlyBindingExample()
         try LateBindingExample()
     }
 
-    private static func EarlyBindingExample() {
+    private static func EarlyBindingExample() throws {
         let writer: IMessageWriter =
-            SecureMessageWriter(
+            try SecureMessageWriter(
                 writer: ConsoleMessageWriter(),
                 identity: GetIdentity()
             )

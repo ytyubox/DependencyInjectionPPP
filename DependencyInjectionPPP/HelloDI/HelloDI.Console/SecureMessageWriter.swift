@@ -1,3 +1,4 @@
+import Foundation
 public protocol IIdentity {
     var IsAuthenticated: Bool { get }
 }
@@ -8,11 +9,17 @@ public class SecureMessageWriter: IMessageWriter {
     private let identity: IIdentity
 
     public init(
-        writer: IMessageWriter,
-        identity: IIdentity
-    ) {
-        self.writer = writer
-        self.identity = identity
+        writer: IMessageWriter?,
+        identity: IIdentity?
+    ) throws {
+        if writer == nil {
+            throw ArgumentNullException("writer")
+        }
+        if identity == nil {
+            throw ArgumentNullException("identity")
+        }
+        self.writer = writer!
+        self.identity = identity!
     }
 
     public func write(message: String) {
@@ -20,4 +27,12 @@ public class SecureMessageWriter: IMessageWriter {
             writer.write(message: message)
         }
     }
+}
+
+public struct ArgumentNullException: LocalizedError {
+    init(_ errorDescription: String) {
+        self.errorDescription = errorDescription
+    }
+
+    public var errorDescription: String?
 }
