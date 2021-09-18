@@ -9,14 +9,6 @@
 /* Begin PBXBuildFile section */
 		D21D14C126F61029004A6AEF /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C026F61029004A6AEF /* Version.swift */; };
 		D21D14D426F610CB004A6AEF /* IMessageWriter.swift in Resources */ = {isa = PBXBuildFile; fileRef = D21D14C926F610CB004A6AEF /* IMessageWriter.swift */; };
-		D21D14D526F610CB004A6AEF /* SecureMessageWriter.swift in Resources */ = {isa = PBXBuildFile; fileRef = D21D14CA26F610CB004A6AEF /* SecureMessageWriter.swift */; };
-		D21D14D626F610CB004A6AEF /* appsettings.json in Resources */ = {isa = PBXBuildFile; fileRef = D21D14CB26F610CB004A6AEF /* appsettings.json */; };
-		D21D14D826F610CB004A6AEF /* ConsoleMessageWriter.swift in Resources */ = {isa = PBXBuildFile; fileRef = D21D14CD26F610CB004A6AEF /* ConsoleMessageWriter.swift */; };
-		D21D14D926F610CB004A6AEF /* Salutation.swift in Resources */ = {isa = PBXBuildFile; fileRef = D21D14CE26F610CB004A6AEF /* Salutation.swift */; };
-		D21D14DA26F610CB004A6AEF /* Program.swift in Resources */ = {isa = PBXBuildFile; fileRef = D21D14CF26F610CB004A6AEF /* Program.swift */; };
-		D21D14DB26F610EC004A6AEF /* SpyMessageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C726F610CB004A6AEF /* SpyMessageWriter.swift */; };
-		D21D14DC26F610EC004A6AEF /* SecureMessageWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C326F610CB004A6AEF /* SecureMessageWriterTests.swift */; };
-		D21D14DD26F610EC004A6AEF /* SalutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C426F610CB004A6AEF /* SalutationTests.swift */; };
 		D25D1B3A26F6087E00BE05CE /* DependencyInjectionPPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D25D1B3126F6087E00BE05CE /* DependencyInjectionPPP.framework */; };
 		D25D1B3F26F6087E00BE05CE /* DependencyInjectionPPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D1B3E26F6087E00BE05CE /* DependencyInjectionPPPTests.swift */; };
 /* End PBXBuildFile section */
@@ -236,11 +228,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D14D426F610CB004A6AEF /* IMessageWriter.swift in Resources */,
-				D21D14D526F610CB004A6AEF /* SecureMessageWriter.swift in Resources */,
-				D21D14D626F610CB004A6AEF /* appsettings.json in Resources */,
-				D21D14D826F610CB004A6AEF /* ConsoleMessageWriter.swift in Resources */,
-				D21D14D926F610CB004A6AEF /* Salutation.swift in Resources */,
-				D21D14DA26F610CB004A6AEF /* Program.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,10 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21D14DC26F610EC004A6AEF /* SecureMessageWriterTests.swift in Sources */,
 				D25D1B3F26F6087E00BE05CE /* DependencyInjectionPPPTests.swift in Sources */,
-				D21D14DB26F610EC004A6AEF /* SpyMessageWriter.swift in Sources */,
-				D21D14DD26F610EC004A6AEF /* SalutationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
