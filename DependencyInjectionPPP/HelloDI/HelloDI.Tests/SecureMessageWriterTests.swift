@@ -3,59 +3,59 @@ import XCTest
 typealias Action = () throws -> Void
 public class SecureMessageWriterTests: XCTestCase {
     // Tests missing? Send us a pull request.
-    
+
     private let AuthenticatedIdentity: IIdentity = TestIdentity(IsAuthenticated: true)
     private let AnonymousIdentity: IIdentity = TestIdentity(IsAuthenticated: false)
-    
+
     public func testSutIsMessageWriter() throws {
         try Assert.IsAssignableFrom<IMessageWriter>(CreateSecureMessageWriter())
     }
-    
+
     public func testInitializeWithNullWriterThrows() throws {
         // Act
         let action: Action = {
             _ = try SecureMessageWriter(writer: nil, identity: WindowsIdentity.GetCurrent())
         }
-        
+
         // Arrange
         Assert.Throws<ArgumentNullException>(action: action)
     }
-    
+
     public func testInitializeWithNullIdentityThrows() throws {
         // Act
         let action: Action = { _ = try SecureMessageWriter(writer: SpyMessageWriter(), identity: nil) }
-        
+
         // Arrange
         Assert.Throws<ArgumentNullException>(action: action)
     }
-    
+
     public func testwriteInvokesDecoratedWriterWhenPrincipalIsAuthenticated() throws {
         // Arrange
         let expectedMessage = "Whatever"
         let writer = SpyMessageWriter()
-        
+
         let sut: SecureMessageWriter = try CreateSecureMessageWriter(writer: writer, identity: AuthenticatedIdentity)
-        
+
         // Act
         sut.write(message: expectedMessage)
-        
+
         // Assert
-        Assert.Equal(expect: expectedMessage, actual: writer.WrittenMessage)
+        Assert.Equal(expected: expectedMessage, actual: writer.WrittenMessage)
     }
-    
+
     public func testWriteDoesNotInvokeWriterWhenPrincipalIsNotAuthenticated() throws {
         // Arrange
         let writer = SpyMessageWriter()
-        
+
         let sut: SecureMessageWriter = try CreateSecureMessageWriter(writer: writer, identity: AnonymousIdentity)
-        
+
         // Act
         sut.write(message: "Anonymous value")
-        
+
         // Assert
-        Assert.Equal(expect: 0, actual: writer.messageCount)
+        Assert.Equal(expected: 0, actual: writer.messageCount)
     }
-    
+
     public struct TestIdentity: IIdentity {
         public var AuthenticationType: String! = nil
         public var IsAuthenticated: Bool
@@ -73,10 +73,10 @@ private func CreateSecureMessageWriter(
 }
 
 enum Assert {
-    static func Equal<E: Equatable>(expect: E, actual: E, file: StaticString = #filePath, line: UInt = #line) {
-        XCTAssertEqual(expect, actual, file: file, line: line)
+    static func Equal<E: Equatable>(expected: E, actual: E, file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertEqual(expected, actual, file: file, line: line)
     }
-    
+
     class Throws<E: Error> {
         @discardableResult
         init(action: @escaping () throws -> Void, file: StaticString = #filePath, line: UInt = #line) {
@@ -85,7 +85,7 @@ enum Assert {
             }
         }
     }
-    
+
     class IsAssignableFrom<T> {
         @discardableResult
         init(_ any: Any, file: StaticString = #filePath, line: UInt = #line) {

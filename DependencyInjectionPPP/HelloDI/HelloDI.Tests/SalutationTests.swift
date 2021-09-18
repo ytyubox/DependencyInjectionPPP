@@ -1,27 +1,23 @@
-using Ploeh.Samples.HelloDI.Console
-using Ploeh.Samples.HelloDI.Tests.Fakes
-using Xunit
+import DependencyInjectionPPP
+import XCTest
+public class SalutationTests: XCTestCase {
+    // Tests missing? Send us a pull request.
 
-namespace Ploeh.Samples.HelloDI.Tests {
-    public class SalutationTests {
-        // Tests missing? Send us a pull request.
+    // ---- Code Listing 1.4 ----
 
-        // ---- Code Listing 1.4 ----
-        [Fact]
-        public func ExclaimWillWriteCorrectMessageToMessageWriter() {
-            // Arrange
-            var writer = new SpyMessageWriter()
+    public func testExclaimWillWriteCorrectMessageToMessageWriter() {
+        // Arrange
+        let writer = SpyMessageWriter()
 
-            var sut = new Salutation(writer)
+        let sut = Salutation(writer: writer)
 
-            // Act
-            sut.Exclaim()
+        // Act
+        sut.Exclaim()
 
-            // Assert
-            Assert.Equal(
-                expected: "Hello DI!",
-                actual: writer.WrittenMessage
-            )
-        }
+        // Assert
+        Assert.Equal(
+            expected: "Hello DI!",
+            actual: writer.WrittenMessage
+        )
     }
 }

@@ -17,6 +17,7 @@
 		D2E2DB2726F619D0004FD87A /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14CF26F610CB004A6AEF /* Program.swift */; };
 		D2E2DB2826F61DE2004FD87A /* SecureMessageWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C326F610CB004A6AEF /* SecureMessageWriterTests.swift */; };
 		D2E2DB2A26F6324A004FD87A /* SpyMessageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C726F610CB004A6AEF /* SpyMessageWriter.swift */; };
+		D2E2DB2B26F637E3004FD87A /* SalutationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C426F610CB004A6AEF /* SalutationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +267,7 @@
 				D25D1B3F26F6087E00BE05CE /* DependencyInjectionPPPTests.swift in Sources */,
 				D2E2DB2A26F6324A004FD87A /* SpyMessageWriter.swift in Sources */,
 				D2E2DB2826F61DE2004FD87A /* SecureMessageWriterTests.swift in Sources */,
+				D2E2DB2B26F637E3004FD87A /* SalutationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
