@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D21D14C126F61029004A6AEF /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C026F61029004A6AEF /* Version.swift */; };
 		D25D1B3A26F6087E00BE05CE /* DependencyInjectionPPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D25D1B3126F6087E00BE05CE /* DependencyInjectionPPP.framework */; };
 		D25D1B3F26F6087E00BE05CE /* DependencyInjectionPPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D1B3E26F6087E00BE05CE /* DependencyInjectionPPPTests.swift */; };
-		D25D1B4A26F6088D00BE05CE /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D1B4926F6088D00BE05CE /* Version.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,10 +23,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D21D14C026F61029004A6AEF /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		D25D1B3126F6087E00BE05CE /* DependencyInjectionPPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DependencyInjectionPPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25D1B3926F6087E00BE05CE /* DependencyInjectionPPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DependencyInjectionPPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D25D1B3E26F6087E00BE05CE /* DependencyInjectionPPPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjectionPPPTests.swift; sourceTree = "<group>"; };
-		D25D1B4926F6088D00BE05CE /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 		D25D1B3326F6087E00BE05CE /* DependencyInjectionPPP */ = {
 			isa = PBXGroup;
 			children = (
-				D25D1B4926F6088D00BE05CE /* Version.swift */,
+				D21D14C026F61029004A6AEF /* Version.swift */,
 			);
 			path = DependencyInjectionPPP;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D25D1B4A26F6088D00BE05CE /* Version.swift in Sources */,
+				D21D14C126F61029004A6AEF /* Version.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
