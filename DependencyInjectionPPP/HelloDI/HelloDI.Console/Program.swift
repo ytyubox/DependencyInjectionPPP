@@ -1,59 +1,68 @@
-using System
-using System.IO
-using System.Runtime.InteropServices
-using System.Security.Principal
-using Microsoft.Extensions.Configuration
-
-namespace Ploeh.Samples.HelloDI.Console {
-    public static enum Program {
-        private static func Main() {
-            EarlyBindingExample()
-            LateBindingExample()
-
-            System.Console.ReadLine()
-        }
-
-        private static func EarlyBindingExample() {
-            IMessageWriter writer =
-                new SecureMessageWriter(
-                    writer: new ConsoleMessageWriter(),
-                    identity: GetIdentity()
-                )
-
-            var salutation = new Salutation(writer)
-
-            salutation.Exclaim()
-        }
-
-        private static func LateBindingExample() {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build()
-
-            string typeName = configuration["messageWriter"]
-            Type type = Type.GetType(typeName, throwOnError: true)
-
-            IMessageWriter writer =
-                new SecureMessageWriter(
-                    writer: IMessageWriter Activator.CreateInstance(type),
-                    identity: GetIdentity()
-                )
-
-            var salutation = new Salutation(writer)
-
-            salutation.Exclaim()
-        }
-
-        private static IIdentity GetIdentity {
-            if RuntimeInformation.IsOSPlatform(OSPlatform.Windows) {
-                return WindowsIdentity.GetCurrent()
-            } else {
-                // For non-Windows OSes, like Mac and Linux.
-                return new GenericIdentity(
-                    Environment.GetEnvironmentVariable("USERNAME")
-                        ?? Environment.GetEnvironmentVariable("USER"))
-            }
-        }
+import Foundation
+public class Program {
+    private static func Main() throws {
+        EarlyBindingExample()
+        try LateBindingExample()
     }
+
+    private static func EarlyBindingExample() {
+        let writer: IMessageWriter =
+            SecureMessageWriter(
+                writer: ConsoleMessageWriter(),
+                identity: GetIdentity()
+            )
+
+        let salutation = Salutation(writer: writer)
+
+        salutation.Exclaim()
+    }
+
+    private static func LateBindingExample() throws {
+        let configuration: [String: String] = try {
+            let data = Bundle(for: Program.self)
+                .url(forResource: "appsettings", withExtension: "json")?
+                .dataRepresentation ?? Data()
+            let configure = try JSONDecoder().decode([String: String].self, from: data)
+            return configure
+        }()
+
+        let typeName = try unwrap(configuration["messageWriter"])
+
+        let writer: IMessageWriter =
+            try SecureMessageWriter(
+                writer: create(IMessageWriterWith: typeName),
+                identity: GetIdentity()
+            )
+
+        let salutation = Salutation(writer: writer)
+
+        salutation.Exclaim()
+    }
+
+    private static func GetIdentity() -> IIdentity {
+        #if os(macOS)
+            return StubIIdentity(IsAuthenticated: false)
+        #else
+            return StubIIdentity(IsAuthenticated: true)
+        #endif
+    }
+}
+
+func create(IMessageWriterWith typeName: String) throws -> IMessageWriter {
+    switch typeName {
+    case "SecureMessageWriter": throw NSError(domain: "Not implemented", code: 0)
+    case "ConsoleMessageWriter": return ConsoleMessageWriter()
+    default: throw NSError(domain: "Type not found", code: 0)
+    }
+}
+
+func unwrap<T>(_ opt: T?) throws -> T {
+    guard let opt = opt else {
+        throw NSError(domain: "\(T.self) is nil", code: 0)
+    }
+    return opt
+}
+
+struct StubIIdentity: IIdentity {
+    var IsAuthenticated: Bool
 }
