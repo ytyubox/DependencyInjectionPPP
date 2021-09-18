@@ -1,4 +1,4 @@
-﻿using Ploeh.Samples.HelloDI.Console;
+using Ploeh.Samples.HelloDI.Console;
 
 namespace Ploeh.Samples.HelloDI.Tests.Fakes
 {
@@ -7,10 +7,10 @@ namespace Ploeh.Samples.HelloDI.Tests.Fakes
     {
         public string WrittenMessage { get; private set; }
 
-        public void Write(string message)
+        public void write(string message)
         {
-            this.WrittenMessage += message;
-            this.MessageCount++;
+            self.WrittenMessage += message;
+            self.MessageCount++;
         }
         // ---- End code Listing 1.4 ----
 

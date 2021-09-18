@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D21D14C126F61029004A6AEF /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C026F61029004A6AEF /* Version.swift */; };
-		D21D14D426F610CB004A6AEF /* IMessageWriter.swift in Resources */ = {isa = PBXBuildFile; fileRef = D21D14C926F610CB004A6AEF /* IMessageWriter.swift */; };
+		D252500226F613E40042830E /* SecureMessageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14CA26F610CB004A6AEF /* SecureMessageWriter.swift */; };
+		D252500326F6142E0042830E /* IMessageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D14C926F610CB004A6AEF /* IMessageWriter.swift */; };
 		D25D1B3A26F6087E00BE05CE /* DependencyInjectionPPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D25D1B3126F6087E00BE05CE /* DependencyInjectionPPP.framework */; };
 		D25D1B3F26F6087E00BE05CE /* DependencyInjectionPPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25D1B3E26F6087E00BE05CE /* DependencyInjectionPPPTests.swift */; };
 /* End PBXBuildFile section */
@@ -227,7 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21D14D426F610CB004A6AEF /* IMessageWriter.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +246,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21D14C126F61029004A6AEF /* Version.swift in Sources */,
+				D252500326F6142E0042830E /* IMessageWriter.swift in Sources */,
+				D252500226F613E40042830E /* SecureMessageWriter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

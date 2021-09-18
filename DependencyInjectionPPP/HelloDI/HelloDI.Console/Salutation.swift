@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Ploeh.Samples.HelloDI.Console
 {
@@ -12,12 +12,12 @@ namespace Ploeh.Samples.HelloDI.Console
             if (writer == null)
                 throw new ArgumentNullException("writer");
 
-            this.writer = writer;
+            self.writer = writer;
         }
 
         public void Exclaim()
         {
-            this.writer.Write("Hello DI!");
+            self.writer.Write("Hello DI!");
         }
     }
 }

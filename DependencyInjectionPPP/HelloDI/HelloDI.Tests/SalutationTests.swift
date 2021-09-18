@@ -1,4 +1,4 @@
-﻿using Ploeh.Samples.HelloDI.Console;
+using Ploeh.Samples.HelloDI.Console;
 using Ploeh.Samples.HelloDI.Tests.Fakes;
 using Xunit;
 

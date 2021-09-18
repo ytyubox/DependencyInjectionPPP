@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Security.Principal;
 using Ploeh.Samples.HelloDI.Console;
 using Ploeh.Samples.HelloDI.Tests.Fakes;
@@ -40,7 +40,7 @@ namespace Ploeh.Samples.HelloDI.Tests
         }
 
         [Fact]
-        public void WriteInvokesDecoratedWriterWhenPrincipalIsAuthenticated()
+        public void writeInvokesDecoratedWriterWhenPrincipalIsAuthenticated()
         {
             // Arrange
             string expectedMessage = "Whatever";
@@ -56,7 +56,7 @@ namespace Ploeh.Samples.HelloDI.Tests
         }
 
         [Fact]
-        public void WriteDoesNotInvokeWriterWhenPrincipalIsNotAuthenticated()
+        public void writeDoesNotInvokeWriterWhenPrincipalIsNotAuthenticated()
         {
             // Arrange
             var writer = new SpyMessageWriter();
