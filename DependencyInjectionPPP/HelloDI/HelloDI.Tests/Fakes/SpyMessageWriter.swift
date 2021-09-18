@@ -1,19 +1,19 @@
-using Ploeh.Samples.HelloDI.Console;
+using Ploeh.Samples.HelloDI.Console
 
 namespace Ploeh.Samples.HelloDI.Tests.Fakes
 {
     // ---- Start code Listing 1.4 ----
     public class SpyMessageWriter : IMessageWriter
     {
-        public string WrittenMessage { get; private set; }
+        public string WrittenMessage { get private set }
 
-        public void write(string message)
+        public func  write(message: String)
         {
-            self.WrittenMessage += message;
-            self.MessageCount++;
+            self.WrittenMessage += message
+            self.MessageCount++
         }
         // ---- End code Listing 1.4 ----
 
-        public int MessageCount { get; private set; }
+        public int MessageCount { get private set }
     }
 }

@@ -1,6 +1,6 @@
-using Ploeh.Samples.HelloDI.Console;
-using Ploeh.Samples.HelloDI.Tests.Fakes;
-using Xunit;
+using Ploeh.Samples.HelloDI.Console
+using Ploeh.Samples.HelloDI.Tests.Fakes
+using Xunit
 
 namespace Ploeh.Samples.HelloDI.Tests
 {
@@ -10,20 +10,20 @@ namespace Ploeh.Samples.HelloDI.Tests
 
         // ---- Code Listing 1.4 ----
         [Fact]
-        public void ExclaimWillWriteCorrectMessageToMessageWriter()
+        public func  ExclaimWillWriteCorrectMessageToMessageWriter()
         {
             // Arrange
-            var writer = new SpyMessageWriter();
+            var writer = new SpyMessageWriter()
 
-            var sut = new Salutation(writer);
+            var sut = new Salutation(writer)
 
             // Act
-            sut.Exclaim();
+            sut.Exclaim()
 
             // Assert
             Assert.Equal(
                 expected: "Hello DI!",
-                actual: writer.WrittenMessage);
+                actual: writer.WrittenMessage)
         }
     }
 }

@@ -12,8 +12,8 @@ public class SecureMessageWriter : IMessageWriter {
         identity: IIdentity )
     {
         
-        self.writer = writer;
-        self.identity = identity;
+        self.writer = writer
+        self.identity = identity
     }
     
     public func write(message: String)

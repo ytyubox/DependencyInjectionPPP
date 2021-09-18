@@ -1,8 +1,8 @@
-using System;
-using System.Security.Principal;
-using Ploeh.Samples.HelloDI.Console;
-using Ploeh.Samples.HelloDI.Tests.Fakes;
-using Xunit;
+using System
+using System.Security.Principal
+using Ploeh.Samples.HelloDI.Console
+using Ploeh.Samples.HelloDI.Tests.Fakes
+using Xunit
 
 namespace Ploeh.Samples.HelloDI.Tests
 {
@@ -10,64 +10,64 @@ namespace Ploeh.Samples.HelloDI.Tests
     {
         // Tests missing? Send us a pull request.
 
-        private static readonly IIdentity AuthenticatedIdentity = new TestIdentity { IsAuthenticated = true };
-        private static readonly IIdentity AnonymousIdentity = new TestIdentity { IsAuthenticated = false };
+        private static readonly IIdentity AuthenticatedIdentity = new TestIdentity { IsAuthenticated = true }
+        private static readonly IIdentity AnonymousIdentity = new TestIdentity { IsAuthenticated = false }
 
         [Fact]
-        public void SutIsMessageWriter()
+        public func  SutIsMessageWriter()
         {
-            Assert.IsAssignableFrom<IMessageWriter>(CreateSecureMessageWriter());
+            Assert.IsAssignableFrom<IMessageWriter>(CreateSecureMessageWriter())
         }
 
         [Fact]
-        public void InitializeWithNullWriterThrows()
+        public func  InitializeWithNullWriterThrows()
         {
             // Act
-            Action action = () => new SecureMessageWriter(writer: null, identity: WindowsIdentity.GetCurrent());
+            Action action = () => new SecureMessageWriter(writer: null, identity: WindowsIdentity.GetCurrent())
 
             // Arrange
-            Assert.Throws<ArgumentNullException>(action);
+            Assert.Throws<ArgumentNullException>(action)
         }
 
         [Fact]
-        public void InitializeWithNullIdentityThrows()
+        public func  InitializeWithNullIdentityThrows()
         {
             // Act
-            Action action = () => new SecureMessageWriter(writer: new SpyMessageWriter(), identity: null);
+            Action action = () => new SecureMessageWriter(writer: new SpyMessageWriter(), identity: null)
 
             // Arrange
-            Assert.Throws<ArgumentNullException>(action);
+            Assert.Throws<ArgumentNullException>(action)
         }
 
         [Fact]
-        public void writeInvokesDecoratedWriterWhenPrincipalIsAuthenticated()
+        public func  writeInvokesDecoratedWriterWhenPrincipalIsAuthenticated()
         {
             // Arrange
-            string expectedMessage = "Whatever";
-            var writer = new SpyMessageWriter();
+            string expectedMessage = "Whatever"
+            var writer = new SpyMessageWriter()
 
-            SecureMessageWriter sut = CreateSecureMessageWriter(writer: writer, identity: AuthenticatedIdentity);
+            SecureMessageWriter sut = CreateSecureMessageWriter(writer: writer, identity: AuthenticatedIdentity)
 
             // Act
-            sut.Write(expectedMessage);
+            sut.Write(expectedMessage)
 
             // Assert
-            Assert.Equal(expected: expectedMessage, actual: writer.WrittenMessage);
+            Assert.Equal(expected: expectedMessage, actual: writer.WrittenMessage)
         }
 
         [Fact]
-        public void writeDoesNotInvokeWriterWhenPrincipalIsNotAuthenticated()
+        public func  writeDoesNotInvokeWriterWhenPrincipalIsNotAuthenticated()
         {
             // Arrange
-            var writer = new SpyMessageWriter();
+            var writer = new SpyMessageWriter()
 
-            SecureMessageWriter sut = CreateSecureMessageWriter(writer: writer, identity: AnonymousIdentity);
+            SecureMessageWriter sut = CreateSecureMessageWriter(writer: writer, identity: AnonymousIdentity)
 
             // Act
-            sut.Write("Anonymous value");
+            sut.Write("Anonymous value")
 
             // Assert
-            Assert.Equal(expected: 0, actual: writer.MessageCount);
+            Assert.Equal(expected: 0, actual: writer.MessageCount)
         }
 
         private static SecureMessageWriter CreateSecureMessageWriter(
@@ -75,14 +75,14 @@ namespace Ploeh.Samples.HelloDI.Tests
         {
             return new SecureMessageWriter(
                 writer: writer ?? new SpyMessageWriter(),
-                identity: identity ?? WindowsIdentity.GetCurrent());
+                identity: identity ?? WindowsIdentity.GetCurrent())
         }
 
         public class TestIdentity : IIdentity
         {
-            public string AuthenticationType { get; set; }
-            public bool IsAuthenticated { get; set; }
-            public string Name { get; set; }
+            public string AuthenticationType { get set }
+            public bool IsAuthenticated { get set }
+            public string Name { get set }
         }
     }
 }

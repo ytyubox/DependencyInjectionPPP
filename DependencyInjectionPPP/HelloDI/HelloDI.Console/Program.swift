@@ -1,65 +1,65 @@
-using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Security.Principal;
-using Microsoft.Extensions.Configuration;
+using System
+using System.IO
+using System.Runtime.InteropServices
+using System.Security.Principal
+using Microsoft.Extensions.Configuration
 
 namespace Ploeh.Samples.HelloDI.Console
 {
     public static class Program
     {
-        private static void Main()
+        private static func  Main()
         {
-            EarlyBindingExample();
-            LateBindingExample();
+            EarlyBindingExample()
+            LateBindingExample()
 
-            System.Console.ReadLine();
+            System.Console.ReadLine()
         }
 
-        private static void EarlyBindingExample()
+        private static func  EarlyBindingExample()
         {
             IMessageWriter writer =
                 new SecureMessageWriter(
                     writer: new ConsoleMessageWriter(),
-                    identity: GetIdentity());
+                    identity: GetIdentity())
 
-            var salutation = new Salutation(writer);
+            var salutation = new Salutation(writer)
 
-            salutation.Exclaim();
+            salutation.Exclaim()
         }
 
-        private static void LateBindingExample()
+        private static func  LateBindingExample()
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .Build();
+                .Build()
 
-            string typeName = configuration["messageWriter"];
-            Type type = Type.GetType(typeName, throwOnError: true);
+            string typeName = configuration["messageWriter"]
+            Type type = Type.GetType(typeName, throwOnError: true)
 
             IMessageWriter writer =
                 new SecureMessageWriter(
                     writer: (IMessageWriter)Activator.CreateInstance(type),
-                    identity: GetIdentity());
+                    identity: GetIdentity())
 
-            var salutation = new Salutation(writer);
+            var salutation = new Salutation(writer)
 
-            salutation.Exclaim();
+            salutation.Exclaim()
         }
 
         private static IIdentity GetIdentity()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return WindowsIdentity.GetCurrent();
+                return WindowsIdentity.GetCurrent()
             }
             else
             {
                 // For non-Windows OSes, like Mac and Linux.
                 return new GenericIdentity(
                     Environment.GetEnvironmentVariable("USERNAME")
-                    ?? Environment.GetEnvironmentVariable("USER"));
+                    ?? Environment.GetEnvironmentVariable("USER"))
             }
         }
     }

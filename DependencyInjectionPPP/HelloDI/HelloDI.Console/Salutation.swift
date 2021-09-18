@@ -1,23 +1,23 @@
-using System;
+using System
 
 namespace Ploeh.Samples.HelloDI.Console
 {
     // ---- Code Listing 1.1 ----
     public class Salutation
     {
-        private readonly IMessageWriter writer;
+        private readonly IMessageWriter writer
 
         public Salutation(IMessageWriter writer)
         {
             if (writer == null)
-                throw new ArgumentNullException("writer");
+                throw new ArgumentNullException("writer")
 
-            self.writer = writer;
+            self.writer = writer
         }
 
-        public void Exclaim()
+        public func  Exclaim()
         {
-            self.writer.Write("Hello DI!");
+            self.writer.Write("Hello DI!")
         }
     }
 }
