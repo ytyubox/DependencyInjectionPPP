@@ -2,16 +2,13 @@ using Ploeh.Samples.HelloDI.Console
 using Ploeh.Samples.HelloDI.Tests.Fakes
 using Xunit
 
-namespace Ploeh.Samples.HelloDI.Tests
-{
-    public class SalutationTests
-    {
+namespace Ploeh.Samples.HelloDI.Tests {
+    public class SalutationTests {
         // Tests missing? Send us a pull request.
 
         // ---- Code Listing 1.4 ----
         [Fact]
-        public func  ExclaimWillWriteCorrectMessageToMessageWriter()
-        {
+        public func ExclaimWillWriteCorrectMessageToMessageWriter() {
             // Arrange
             var writer = new SpyMessageWriter()
 
@@ -23,7 +20,8 @@ namespace Ploeh.Samples.HelloDI.Tests
             // Assert
             Assert.Equal(
                 expected: "Hello DI!",
-                actual: writer.WrittenMessage)
+                actual: writer.WrittenMessage
+            )
         }
     }
 }
